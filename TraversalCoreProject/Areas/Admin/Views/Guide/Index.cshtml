@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concretes
+@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Guide List</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Name & Surname</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.GuideID</td>
+            <td><a href="@item.Image"></a></td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>
+                @{
+                    if (item.Status == true)
+                    {
+                        <td><a href="/Admin/Guide/ChangeToFalse/@item.GuideID" class="btn btn-btn-outline-warning">Make it offline</a></td>
+                    }
+                    else
+                    {
+                        <td><a href="/Admin/Guide/ChangeToTrue/@item.GuideID class="btn btn-btn-outline-info">Make it online</a></td>
+                    }
+                  }
+                </td>
+                <td><a href="/Admin/Guide/EditGuide" class="btn btn-outline-primary">Edit</a></td>
+            </tr>
+    }
+    </table>
+
+    <a href="/Admin/Guide/AddGuide/" class="b tn btn-outline-primary">Create New Guide </a>
+    //işin tamamlandığında sen buraya gideceksin

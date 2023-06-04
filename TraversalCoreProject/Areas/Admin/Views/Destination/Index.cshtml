@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concretes
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Tour Routes</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>City</th>
+        <th>Price</th>
+        <th>Capacity</th>
+        <th>See it in page</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>See more</th>
+    </tr>
+
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.DestinationID</td>
+           <td>@item.City</td>
+           <td>@item.Price</td>
+           <td>@item.Capacity</td>
+            <td><a href="#" class="/Destination/Details/@item.DestinationID">See it in website</a></td>
+            <td><a href="#" class="/Destination/DeleteDestination/@item.DestinationID">Delete</a></td>
+            <td><a href="#" class="/Destination/UpdateDestination/@item.DestinationID">Update</a></td>
+       </tr>
+       
+
+   }
+</table>
+<a href="/Admin/Destination/AddDestination" class="btn btn-outline-primary">New Tour Routes</a> //bu buton bizi oraya fırlatacaklar
+

@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concretes
+@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Role List</h1>
+
+@if (Model.Count>0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Rol Name</th>
+            <th>Delete Role</th>
+            <th>Update Role</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td><a href="/Admin/Role/DeleteRole/@item.Id" class="btn btn-outline-danger">Delete Role</a></td>
+                <td><a href="/Admin/Role/UpdateRole/@item.Id" class="btn btn-outline-success">Update Role</a></td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-success">
+        <span>Any role undefined</span>
+    </div>
+}
+
+
+
+<a href="#" class="btn btn-outline-primary">Enter a new role</a>
+
